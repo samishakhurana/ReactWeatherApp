@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header"
+import WeatherCard from "./components/WeatherCard"
+import apiKey from './apiKeys'
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount () {
+    var url=`http://api.openweathermap.org/data/2.5/forecast?zip=132103,in&appid=${apiKey.key}`
+    fetch(url)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
+  render () {
+    return (
+      <div className="app-container">
+        <Header text="abcd" />
+        <div className="app-container__card">
+          {[1,2,3,4,5].map(day => (<WeatherCard />))}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

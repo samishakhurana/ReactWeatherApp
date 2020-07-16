@@ -1,0 +1,24 @@
+.header-container {
+  color: white;
+  text-align: center;
+}
+
+.card-container {
+  background-color: white;
+  color: black;
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  margin: 25px;
+  flex-grow: 1;
+  h2, p {
+    margin: 0px;
+  }
+  img {
+    height: 80px;
+  }
+}
+
+.grey-text {
+  color: gray;
+}

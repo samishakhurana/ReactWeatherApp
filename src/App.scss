@@ -1,0 +1,10 @@
+.app-container {
+  box-sizing: border-box;
+  min-height: 100%;
+  border: 1px solid white;
+  background-color: black;
+  padding: 10px 30px;
+  &__card {
+    display: flex;
+  }
+}
