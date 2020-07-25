@@ -11,12 +11,20 @@
   text-align: center;
   margin: 25px;
   flex-grow: 1;
+  cursor: pointer;
   h2, p {
     margin: 0px;
   }
   img {
     height: 80px;
   }
+  p {
+    text-transform: capitalize;
+  }
+}
+
+.selected-card {
+  border: 5px solid forestgreen;
 }
 
 .grey-text {

@@ -7,4 +7,14 @@
   &__card {
     display: flex;
   }
+  &__chart {
+    text-align: center;
+    > div {
+      display: inline-block
+    }
+    .ReactChart {
+      background-color: white;
+      padding: 10px;
+    }
+  }
 }

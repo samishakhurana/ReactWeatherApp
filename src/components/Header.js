@@ -1,7 +1,10 @@
 import React from 'react';
 import './components.scss'
 
-function Header () {
+function Header (props) {
+  const tempTypeChange = function (event) {
+    props.degreeTypeChange(event.target.value)
+  }
   return (
     <div className="header-container">
       <p className="header-container__quote">
@@ -11,9 +14,9 @@ function Header () {
         Showing weather forecast for Panipat, Haryana
       </p>
       <div>
-        <input type="radio" name="temp" value="celsius" defaultChecked /> Celsius
+        <input type="radio" name="temp" value="celsius" defaultChecked onClick={tempTypeChange}/> Celsius
         <span> |</span>
-        <input type="radio" name="temp" value="farenheit" /> Farenheit
+        <input type="radio" name="temp" value="farenheit" onClick={tempTypeChange}/> Farenheit
       </div>
     </div>
   );
