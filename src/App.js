@@ -20,7 +20,6 @@ class App extends React.Component {
   }
 
   tempTypeChanged (value) {
-    console.log(value)
     this.setState({tempType: value}, this.callWeatherInfoApi)
   }
 
@@ -30,6 +29,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({weatherData: data.list})
+        this.selectedDayChange(0)
       })
   }
 
@@ -43,11 +43,12 @@ class App extends React.Component {
     var hourlyWeatherInfo = []
     for(var i=weatherObjIndex; i < (weatherObjIndex + 8); i++) {
       var obj = []
-      var time = new Date(this.state.weatherData[i].dt*1000).getHours()
+      var time =parseInt(this.state.weatherData[i].dt_txt.split(' ')[1].split(':')[0])
       var temp = this.state.weatherData[i].main.temp
-      obj.push(temp)
       obj.push(time)
+      obj.push(temp)
       hourlyWeatherInfo.push(obj)
+      if (time === 21) break;
     }
     this.setState({hourlyWeatherInfo})
     console.log(hourlyWeatherInfo)
@@ -69,7 +70,7 @@ class App extends React.Component {
               />))}
         </div>
         <div className="app-container__chart">
-          {/* <MyChart hourlyWeatherInfo={this.state.hourlyWeatherInfo}/> */}
+          <MyChart hourlyWeatherInfo={this.state.hourlyWeatherInfo}/>
         </div>
       </div>
     );
